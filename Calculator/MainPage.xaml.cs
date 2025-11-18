@@ -13,7 +13,7 @@ public partial class MainPage : ContentPage
 
 
     private void OnNumberPressed(object? sender, EventArgs e)
-    {
+    {   
         Button pressedButton = sender as Button;
 
         if (pressedButton != null)
@@ -29,6 +29,21 @@ public partial class MainPage : ContentPage
             }
         }
         
+    }
+    private void OnDecimalPressed(object? sender, EventArgs e)
+    {
+        if (isFirstNumberAfterOperator)
+        {
+            Display.Text = "0,";
+            isFirstNumberAfterOperator = false;
+        }
+        else
+        {
+            if (!Display.Text.Contains(","))
+            {
+                Display.Text = Display.Text + ",";
+            }
+        }
     }
 
     private void OnOperatorPressed(object? sender, EventArgs e)
