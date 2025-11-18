@@ -82,4 +82,29 @@ public partial class MainPage : ContentPage
             
         }
     }
+    private void OnClearAllPressed(object sender, EventArgs e)
+    {
+        firstNumber = 0;
+        secondNumber = 0;
+        currentOperator = "";
+        isFirstNumberAfterOperator = true;
+        Display.Text = "0";
+        HistoryDisplay.Text = "";
+    }
+    private void OnClearEntryPressed(object sender, EventArgs e)
+    {
+        Display.Text = "0";
+        isFirstNumberAfterOperator = true;
+        if (currentOperator == "" )
+        {
+            firstNumber = 0;
+            secondNumber = 0;
+            HistoryDisplay.Text= "0";
+        }
+        else
+        {
+            secondNumber = 0;
+            HistoryDisplay.Text= $"{firstNumber}{currentOperator}";
+        }
+    }
 }
