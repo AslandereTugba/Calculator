@@ -63,6 +63,18 @@ public partial class MainPage : ContentPage
                 
             }
 
+            string expression = $"{firstNumber} {currentOperator} {secondNumber}";
+            if (pressedButton!.Text == "=")
+            {
+                // Sonuç verirken: 8 + 5 =
+                HistoryDisplay.Text = expression + " =";
+            }
+            else
+            {
+                // Zincir devam ederken: 8 + 5
+                HistoryDisplay.Text = expression;
+            }
+
             Display.Text = result.ToString();
             currentOperator = pressedButton.Text;
             if(pressedButton.Text == "=") currentOperator = "";

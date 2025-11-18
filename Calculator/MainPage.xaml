@@ -13,7 +13,18 @@
            <RowDefinition Height="*"></RowDefinition>
            
        </Grid.RowDefinitions>
-       <Entry x:Name="Display" Grid.Row="0" Grid.Column="0" Keyboard="Numeric" Grid.ColumnSpan="4" ></Entry>
+       <VerticalStackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Spacing="0">
+           <Label x:Name="HistoryDisplay"
+                  HorizontalTextAlignment="End"
+                  VerticalTextAlignment="Center"
+                  FontSize="14"
+                  TextColor="Gray" />
+           
+           <Entry x:Name="Display"
+                  Keyboard="Numeric"
+                  HorizontalTextAlignment="End"
+                  FontSize="32" />
+       </VerticalStackLayout>
        <Button x:Name="NumberButton1" Clicked="OnNumberPressed" Text="1" Grid.Row="1" Grid.Column="0"></Button>
        <Button x:Name="NumberButton2" Clicked="OnNumberPressed" Text="2" Grid.Row="1" Grid.Column="1"></Button>
        <Button x:Name="NumberButton3" Clicked="OnNumberPressed" Text="3" Grid.Row="1" Grid.Column="2"></Button>
