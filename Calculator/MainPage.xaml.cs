@@ -35,6 +35,52 @@ public partial class MainPage : ContentPage
     {
         Button pressedButton = sender as Button;
 
+        string op = pressedButton.Text;
+
+        if (op == "x²" || op == "√")
+        {
+            double value = Double.Parse(Display.Text);
+            double result;
+            if (op == "x²")
+                result = value * value;
+            else
+                result = Math.Sqrt(value);
+
+            if (currentOperator == "")
+            {
+                if (op == "x²")
+                    HistoryDisplay.Text = $"{value}²";
+                else
+                    HistoryDisplay.Text = $"√{value}";
+            }
+            else
+            {
+                string secondText;
+                if (op == "x²")
+                {
+                    secondText = $"{value}²";
+                }
+                else
+                {
+                    secondText = $"√{value}";
+                }
+                HistoryDisplay.Text = $"{firstNumber}{currentOperator}{secondText}";
+            }
+
+            Display.Text = result.ToString();
+
+            if (currentOperator == "")
+            {
+                firstNumber = result;
+                isFirstNumberAfterOperator = true;
+            }
+            else
+            {
+                isFirstNumberAfterOperator = false;
+            }
+            return;
+        }
+
         if (isFirstNumberAfterOperator)
         {
             currentOperator = pressedButton.Text;
@@ -66,12 +112,10 @@ public partial class MainPage : ContentPage
             string expression = $"{firstNumber} {currentOperator} {secondNumber}";
             if (pressedButton!.Text == "=")
             {
-                // Sonuç verirken: 8 + 5 =
                 HistoryDisplay.Text = expression + " =";
             }
             else
             {
-                // Zincir devam ederken: 8 + 5
                 HistoryDisplay.Text = expression;
             }
 
